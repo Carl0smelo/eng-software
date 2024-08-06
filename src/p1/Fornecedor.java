@@ -7,7 +7,7 @@ public class Fornecedor {
     private String nome;
 
     private boolean bomFornecedor;
-    private List<Avaliacao> minhasAvaliacoes = new ArrayList<Avaliacao>();
+    private final List<Avaliacao> minhasAvaliacoes = new ArrayList<>();
 
     public String getNome() {
         return nome;
