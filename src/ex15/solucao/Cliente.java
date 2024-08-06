@@ -1,12 +1,11 @@
 package ex15.solucao;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Vector;
 
 public class Cliente {
-    private String nome;
-    private Collection<Aluguel> fitasAlugadas = new Vector<Aluguel>();
+    private final String nome;
+    private final Collection<Aluguel> fitasAlugadas = new Vector<>();
 
     public Cliente(String nome) {
         this.nome = nome;
@@ -15,31 +14,25 @@ public class Cliente {
     public String getNome() {
         return nome;
     }
+
     public void adicionaAluguel(Aluguel aluguel) {
         fitasAlugadas.add(aluguel);
     }
 
     public String extrato() {
-        final String fimDeLinha = System.getProperty("line.separator");
+        final String fimDeLinha = System.lineSeparator();
         double valorTotal = 0.0;
-        int pontosDeAlugadorFrequente = 0;
 
-        String resultado = "Registro de Alugueis de " + getNome() + fimDeLinha;
+        StringBuilder resultado = new StringBuilder("Registro de Alugueis de " + getNome() + fimDeLinha);
 
-        Iterator<Aluguel> alugueis = fitasAlugadas.iterator();
-        while(alugueis.hasNext()) {
-            double valorCorrente = 0.0;
-            Aluguel cada = alugueis.next();
+        for (Aluguel fita : fitasAlugadas) {
+            double valorCorrente = fita.calcularValor();
 
-            valorCorrente = cada.calcularValor();
-
-            resultado += cada.getTituloFita() + ":" + valorCorrente + fimDeLinha;
+            resultado.append(fita.getTituloFita()).append(": ").append(valorCorrente).append(fimDeLinha);
             valorTotal += valorCorrente;
-        } // fim do while
+        }
 
-        resultado += "Valor total devido: " + valorTotal + fimDeLinha;
-//    resultado += "Voce acumulou " + pontosDeAlugadorFrequente + " pontos" + fimDeLinha;
-        return resultado;
+        resultado.append("Valor total devido: ").append(valorTotal).append(fimDeLinha);
+        return resultado.toString();
     }
 }
-
