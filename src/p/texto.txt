@@ -1,0 +1,6 @@
+Justificativa
+considerando o principio de responsabilidade unica, refatorei a classe AvaliadorCliente, agora tem uma única responsabilidade, que é delegar a retornar o tipo do cliente de acordo com a estratégia configurada. A lógica de avaliação foi movida para a classe CriterioClientePadrao.
+Princípio Aberto/Fechado (OCP): A classe AvaliadorNovaNota está aberta para extensão, mas fechada para modificação. Novas estratégias de avaliação podem ser adicionadas sem modificar a classe existente.
+Princípio da Inversão de Dependência (DIP): A classe AvaliadorNovaNota depende de uma abstração (EstrategiaAvaliacao) e não de uma implementação concreta.
+Princípio da Segregação de Interfaces (ISP): A interface EstrategiaAvaliacao é pequena e específica para a avaliação de fornecedores.
+Princípio da Substituição de Liskov (LSP): Qualquer implementação de EstrategiaAvaliacao pode substituir a implementação padrão sem alterar o comportamento esperado.
