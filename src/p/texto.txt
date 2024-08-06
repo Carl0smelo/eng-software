@@ -1,6 +1,15 @@
-Justificativa
-considerando o principio de responsabilidade unica, refatorei a classe AvaliadorCliente, agora tem uma única responsabilidade, que é delegar a retornar o tipo do cliente de acordo com a estratégia configurada. A lógica de avaliação foi movida para a classe CriterioClientePadrao.
-Princípio Aberto/Fechado (OCP): A classe AvaliadorNovaNota está aberta para extensão, mas fechada para modificação. Novas estratégias de avaliação podem ser adicionadas sem modificar a classe existente.
-Princípio da Inversão de Dependência (DIP): A classe AvaliadorNovaNota depende de uma abstração (EstrategiaAvaliacao) e não de uma implementação concreta.
-Princípio da Segregação de Interfaces (ISP): A interface EstrategiaAvaliacao é pequena e específica para a avaliação de fornecedores.
-Princípio da Substituição de Liskov (LSP): Qualquer implementação de EstrategiaAvaliacao pode substituir a implementação padrão sem alterar o comportamento esperado.
+Considerando o princípio da responsabilidade única, refatorei a classe AvaliadorCliente, agora ela tem apenas uma responsabilidade, que é retornar o tipo de cliente de acordo com a estratégia configurada. A lógica de avaliação foi movida para a classe CriterioClientePadrao.
+
+
+Além disso, considerando o princípio Aberto/Fechado, refatorei a classe AvaliadorCliente para ser aberta para extensão, mas fechada para modificação, onde novos critérios de avaliação podem ser adicionados sem modificar a classe existente, implementando a nova interface CriterioCliente.
+
+Considerando também o princípio da inversão de dependências, a classe AvaliadorCliente depende de uma abstração e não de uma implementação concreta.
+
+
+Ao criar a interface CriterioCliente, também respeito o princípio de segregação de interfaces, por ser uma interface simples e específica para sua aplicação.
+
+
+Também respeitei o princípio de substituição de Liskov, que diz que qualquer classe que implemente CriterioCliente pode substituir a implementação padrão sem alterar o comportamento da classe pai.
+
+Por fim, ao separar a lógica CalcularTotalCompras da classe AvaliadorCliente, consegui respeitar o princípio de responsabilidade única desta classe e permitir que a mesma implementação seja utilizada em códigos futuros, evitando duplicações.
+
